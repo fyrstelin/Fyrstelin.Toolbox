@@ -30,7 +30,7 @@ jobs:
           fi
 
           CURRENT_VERSION=${LATEST_TAG:-0.0.0}
-          TAG=$(node ./github/main.mjs $CURRENT_VERSION "$LOG" beta)
+          TAG=$(node .github/main.mjs $CURRENT_VERSION "$LOG" beta)
 
           git tag -a $TAG -m "Beta release"
 
