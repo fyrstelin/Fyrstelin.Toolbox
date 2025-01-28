@@ -26,7 +26,13 @@ jobs:
         run: |
           VERSION=$(git describe --tags --abbrev=0)
           if [[ "$VERSION" == *"alpha"* ]]; then
-            dotnet nuget delete Fyrstelin.Toolbox $VERSION -k $NUGET_KEY --non-interactive -s https://api.nuget.org/v3/index.json
+            for pkg in $(find . -name '*.nupkg'); do
+              PACKAGE_ID=$(dotnet nuget list package "$pkg" --verbosity minimal | grep -oP '^.*(?= \d)') # Extract package ID
+              dotnet nuget delete "$PACKAGE_ID" "$VERSION" \
+                --api-key ${{ secrets.NUGET_KEY }} \
+                --source https://api.nuget.org/v3/index.json \
+                --non-interactive --unlist
+            done
           fi
         env:
           NUGET_KEY: ${{ secrets.NUGET_KEY }}
