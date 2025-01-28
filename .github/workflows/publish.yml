@@ -27,7 +27,9 @@ jobs:
           VERSION=$(git describe --tags --abbrev=0)
           if [[ "$VERSION" == *"alpha"* ]]; then
             for pkg in $(find . -name '*.nupkg'); do
-              PACKAGE_ID=$(dotnet nuget list package "$pkg" --verbosity minimal | grep -oP '^.*(?= \d)') # Extract package ID
+              PACKAGE_ID=$(basename "$pkg" | sed -E 's/(.*)\.[0-9]+\.[0-9]+\.[0-9]+.*\.nupkg/\1/')
+              echo "Unlisting package: $PACKAGE_ID, Version: $VERSION"
+
               dotnet nuget delete "$PACKAGE_ID" "$VERSION" \
                 --api-key $NUGET_KEY \
                 --source https://api.nuget.org/v3/index.json \
