@@ -5,6 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/fyrstelin/Fyrstelin.Toolbox</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>

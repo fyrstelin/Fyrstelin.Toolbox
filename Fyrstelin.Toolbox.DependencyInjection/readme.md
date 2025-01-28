@@ -1,5 +1,5 @@
 # Fyrstelin.Toolbox.DependencyInjection
-Structural design patters for dependency injcet.
+Structural design patters for dependency inject.
 
 ## Composite Pattern
 Sometimes a composite is needed. Dotnet does not support this out of the box due to circular dependencies. It can be solved with keyed services, but in my opinion your classes should not depend on the IoC framework. 

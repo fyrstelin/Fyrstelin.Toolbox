@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
     <SignAssembly>False</SignAssembly>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/fyrstelin/Fyrstelin.Toolbox</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
