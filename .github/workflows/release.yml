@@ -1,0 +1,32 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - '**'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.ACTIONS_KEY }}
+      - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
+      - name: Install dependencies
+        run: dotnet restore
+      - name: Pack
+        run: dotnet pack --no-restore -c Release -o dist -p:PackageVersion=$(git describe --tags --abbrev=0)
+      - name: Release
+        run: |
+          VERSION=$(git describe --tags --abbrev=0)
+          if [[ "$VERSION" == *"-"* ]]; then
+            gh release create $(git describe --tags --abbrev=0) dist/* --generate-notes -p
+          else
+            gh release create $(git describe --tags --abbrev=0) dist/* --generate-notes
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.ACTIONS_KEY }}
