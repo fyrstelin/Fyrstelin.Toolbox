@@ -1,0 +1,37 @@
+name: Tag beta
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.ACTIONS_KEY }}
+      - name: Tag beta
+        env: 
+          GITHUB_ACTOR: ${{ github.actor }}
+        run: |
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+
+          LATEST_TAG=$(git describe --tags --abbrev=0 || true)
+
+          if [[ -z "$LATEST_TAG" ]]; then
+            LOG=$(git log --oneline --format=%B)
+          else
+            LOG=$(git log --oneline --format=%B $LATEST_TAG..)
+          fi
+
+          CURRENT_VERSION=${LATEST_TAG:-0.0.0}
+          TAG=$(node ./github/main.mjs $CURRENT_VERSION "$LOG" beta)
+
+          git tag -a $TAG -m "Beta release"
+
+          git push origin $TAG
