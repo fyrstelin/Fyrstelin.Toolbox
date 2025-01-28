@@ -1,0 +1,49 @@
+name: Tag alpha
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.ACTIONS_KEY }}
+      - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
+      - name: Install dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --no-restore
+      - name: Test
+        run: dotnet test --no-restore --verbosity normal
+      - name: Tag Alpha
+        env: 
+          GITHUB_ACTOR: ${{ github.actor }}
+        run: |
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+
+          git fetch --tags
+
+          LATEST_TAG=$(git describe --tags --abbrev=0 2> /dev/null || true)
+          
+          if [[ -z "$LATEST_TAG" ]]; then
+            LOG=$(git log --oneline --format=%B)
+          else
+            LOG=$(git log --oneline --format=%B $LATEST_TAG..)
+          fi
+
+          CURRENT_VERSION=${LATEST_TAG:-0.0.0}
+          TAG=$(node .github/main.mjs $CURRENT_VERSION "$LOG" alpha $(git rev-parse --short HEAD))
+
+          git tag -a $TAG -m "Alpha release"
+
+          git push origin $TAG
