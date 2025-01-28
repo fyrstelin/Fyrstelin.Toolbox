@@ -29,7 +29,7 @@ jobs:
             for pkg in $(find . -name '*.nupkg'); do
               PACKAGE_ID=$(dotnet nuget list package "$pkg" --verbosity minimal | grep -oP '^.*(?= \d)') # Extract package ID
               dotnet nuget delete "$PACKAGE_ID" "$VERSION" \
-                --api-key ${{ secrets.NUGET_KEY }} \
+                --api-key $NUGET_KEY \
                 --source https://api.nuget.org/v3/index.json \
                 --non-interactive --unlist
             done
