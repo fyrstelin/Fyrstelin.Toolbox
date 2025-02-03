@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fyrstelin.Toolbox", "Fyrstelin.Toolbox\Fyrstelin.Toolbox.csproj", "{D8DA9033-4DE6-4A81-818E-1A17448AD26B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fyrstelin.Toolbox", "Fyrstelin.Toolbox\Fyrstelin.Toolbox.csproj", "{D8DA9033-4DE6-4A81-818E-1A17448AD26B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fyrstelin.Toolbox.DependencyInjection", "Fyrstelin.Toolbox.DependencyInjection\Fyrstelin.Toolbox.DependencyInjection.csproj", "{42494151-4AD2-4482-836A-7C66D6144E32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fyrstelin.Toolbox.DependencyInjection", "Fyrstelin.Toolbox.DependencyInjection\Fyrstelin.Toolbox.DependencyInjection.csproj", "{42494151-4AD2-4482-836A-7C66D6144E32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fyrstelin.Toolbox.Tests", "Fyrstelin.Toolbox.Tests\Fyrstelin.Toolbox.Tests.csproj", "{142F099B-6798-4BE4-9578-F19819711808}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fyrstelin.Toolbox.Tests", "Fyrstelin.Toolbox.Tests\Fyrstelin.Toolbox.Tests.csproj", "{142F099B-6798-4BE4-9578-F19819711808}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
