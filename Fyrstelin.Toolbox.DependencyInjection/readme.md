@@ -1,29 +1,66 @@
 # Fyrstelin.Toolbox.DependencyInjection
 Structural design patters for dependency inject.
 
-## Composite Pattern
-Sometimes a composite is needed. Dotnet does not support this out of the box due to circular dependencies. It can be solved with keyed services, but in my opinion your classes should not depend on the IoC framework. 
-
+### Services
 ```c#
-// services
 public interface IService;
 public class ServiceA : IService;
 public class ServiceB : IService;
-public class Composite(IEnumerable<IService> children) : IService;
+public class Decorator(IService decoratee) : IService;
+public class Composite(IEnumberable<IService> children) : IService;
+```
 
-// add services
+## Decorator Pattern
+
+### Simple usage
+```c#
+services
+  .AddSingleton<IService, ServiceA>()
+  .Decorate<IService, Decorator>();
+
+var service = provider.GetRequiredService<IService>();
+//  ^ Decorator with ServiceA as decoratee
+```
+
+### Decorate a keyed service
+```c#
+services
+  .AddKeyedSingleton<IService, ServiceA>("some key")
+  .Decorate<IService, Decorator>("some key");
+
+var decorator = provider.GetRequiredService<IService>();
+//  ^ Decorator with ServiceA as decoratee
+var service = provider.GetRequiredKeyedService<IService>("some key");
+//  ^ ServiceA
+```
+
+### Keyed decorator
+```c#
+services
+  .AddSingleton<IService, ServiceA>()
+  .KeyedDecorate<IService, Decorator>("some key");
+
+var decorator = provider.GetRequiredKeyedService<IService>("some key");
+//  ^ Decorator with ServiceA as decoratee
+var service = provider.GetRequired<IService>();
+//  ^ ServiceA
+```
+
+## Composite Pattern
+
+### Simple usage
+
+```c#
 services
   .AddSingleton<IService, ServiceA>()
   .AddScoped<IService, ServiceB>()
   .Compose<IService, Composite>();
 
-// Get service (probably through dependency injection)
 var service = provider.GetRequiredService<IService>();
 //  ^ Composite with ServiceA and ServiceB as children
 ```
 
-### Keyed services
-You can compose your composite from keyed services:
+### Compose keyed services
 
 ```c#
 services
@@ -39,11 +76,17 @@ var services = provider.GetKeyedServices<IService>("my-key")
 
 ```
 
-### Keyed compose
-Just like the build in methids, a KeyedCompose exists:
+### Keyed composite
 
 ```c#
 services
-  .KeyedCompose<IService, Composite>("my-key")
-  .KeyedCompose<IService, Composite>("my-key", "from-key");
+  .AddSingleton<IService, ServiceA>()
+  .AddScoped<IService, ServiceB>()
+  .KeyedCompose<IService, Composite>("my-key");
+
+var service = provider.GetRequiredKeyedService<IService>("my-key");
+//  ^ Composite with ServiceA and ServiceB as children
+
+var services = provider.GetServices<IService>()
+//  ^ IEnumerable<IService> containing ServiceA and ServiceB
 ```
