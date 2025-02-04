@@ -10,6 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Fyrstelin.Toolbox.DependencyInjection\Fyrstelin.Toolbox.DependencyInjection.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="readme.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
