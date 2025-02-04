@@ -2,7 +2,6 @@
 
 namespace Fyrstelin.Toolbox.DependencyInjection;
 
-
 public static partial class ServiceCollectionExtensions
 {
     public static IServiceCollection KeyedDecorate<TService, TDecorator>(this IServiceCollection services, object key, object? fromKey = null)
