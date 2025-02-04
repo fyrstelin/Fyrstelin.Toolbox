@@ -51,6 +51,6 @@ public static partial class ServiceCollectionExtensions
             decoratee.Lifetime
         ));
 
-            return services;
+        return services;
     }
 }
