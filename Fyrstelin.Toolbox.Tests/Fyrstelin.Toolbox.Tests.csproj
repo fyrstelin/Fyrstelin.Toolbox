@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Fyrstelin.Toolbox.DependencyInjection\Fyrstelin.Toolbox.DependencyInjection.csproj" />
+    <ProjectReference Include="..\Fyrstelin.Toolbox\Fyrstelin.Toolbox.csproj" />
   </ItemGroup>
 
   <ItemGroup>

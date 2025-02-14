@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fyrstelin.Toolbox.Dependenc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fyrstelin.Toolbox.Tests", "Fyrstelin.Toolbox.Tests\Fyrstelin.Toolbox.Tests.csproj", "{142F099B-6798-4BE4-9578-F19819711808}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fyrstelin.Toolbox.Result", "Fyrstelin.Toolbox.Result\Fyrstelin.Toolbox.Result.csproj", "{38413D93-DA25-4325-B03B-DE8BE8C062B6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{142F099B-6798-4BE4-9578-F19819711808}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{142F099B-6798-4BE4-9578-F19819711808}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{142F099B-6798-4BE4-9578-F19819711808}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38413D93-DA25-4325-B03B-DE8BE8C062B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38413D93-DA25-4325-B03B-DE8BE8C062B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38413D93-DA25-4325-B03B-DE8BE8C062B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38413D93-DA25-4325-B03B-DE8BE8C062B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Fyrstelin.Toolbox.DependencyInjection\Fyrstelin.Toolbox.DependencyInjection.csproj" />
+    <ProjectReference Include="..\Fyrstelin.Toolbox.Result\Fyrstelin.Toolbox.Result.csproj" />
   </ItemGroup>
 
   <ItemGroup>
