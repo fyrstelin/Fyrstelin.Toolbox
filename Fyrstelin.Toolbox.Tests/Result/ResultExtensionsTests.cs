@@ -1,8 +1,8 @@
 using Shouldly;
 
-namespace Fyrstelin.Toolbox.Tests.Results;
+namespace Fyrstelin.Toolbox.Tests;
 
-public class ResultExtensionsTests : Tests
+public class ResultExtensionsTests : ResultTesting
 {
     [Fact]
     public void ShouldConvertToResult()
