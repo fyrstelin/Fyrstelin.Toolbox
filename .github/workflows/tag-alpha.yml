@@ -23,7 +23,7 @@ jobs:
       - name: Build
         run: dotnet build --no-restore
       - name: Test
-        run: dotnet test --no-restore --verbosity normal --logger GitHubActions
+        run: dotnet test --no-restore --verbosity normal --logger "GitHubActions;summary.includePassedTests=true;summary.includeSkippedTests=true"
       - name: Tag Alpha
         env: 
           GITHUB_ACTOR: ${{ github.actor }}
