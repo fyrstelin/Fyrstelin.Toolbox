@@ -37,6 +37,13 @@ public readonly struct Result<TValue, TError>
 
     public static implicit operator Result<TValue, TError>(TValue value) => new(value);
     public static implicit operator Result<TValue, TError>(TError error) => new(error);
+    
+    // Unit and never
+    public static implicit operator Result<TValue, TError>(Result<TValue, Never> result) => new(result._value);
+    public static implicit operator Result<Unit, TError>(Result<TValue, TError> result) => result.Convert<Unit, TError>(
+        _ => Result.Ok(),
+        e => e
+    );
 
     public static implicit operator bool(Result<TValue, TError> value) => value._isSuccess;
 
@@ -47,6 +54,10 @@ public readonly struct Result<TValue, TError>
 
 public static class Result
 {
+    private static readonly Result<Unit, Never> OkUnit = new Unit();
+    public static Result<Unit, Never> Ok() => OkUnit;
+    public static Result<T, Never> Ok<T>(T value) => value;
+
     public static Result<(T1, T2), TError> Combine<T1, T2, TError>(
         Result<T1, TError> r1,
         Result<T2, TError> r2

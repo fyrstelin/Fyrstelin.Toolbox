@@ -1,6 +1,6 @@
 ﻿namespace Fyrstelin.Toolbox.Linq;
 
-public static partial class Operators
+public static class WhereOperator
 {
     public static Result<T, TError> Where<T, TTemp, TError>(
         this Result<T, TError> result,

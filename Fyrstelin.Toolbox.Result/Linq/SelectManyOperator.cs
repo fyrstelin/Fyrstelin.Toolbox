@@ -1,6 +1,6 @@
 ﻿namespace Fyrstelin.Toolbox.Linq;
 
-public static partial class Operators
+public static class SelectManyOperator
 {
     public static Result<TTarget, TError> SelectMany<TSource, TTemp, TTarget, TError>(
         this Result<TSource, TError> that,

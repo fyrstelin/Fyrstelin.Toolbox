@@ -55,4 +55,35 @@ public class ResultExtensionsTests : ResultTesting
         result
             .ShouldBe(new Error("hello"));
     }
+
+    [Fact]
+    public void ShouldRecoverWithValue()
+    {
+        var result = Fail<string>(new Error("sad"));
+
+        result
+            .Recover(err => "I was " + err.Message + ". Now I am happy!!")
+            .ShouldBeOfType<Result<string, Never>>()
+            .ShouldBe("I was sad. Now I am happy!!");
+    }
+
+    [Fact]
+    public void ShouldRecoverWithResult()
+    {
+        var result = Fail<string>(new Error("sad"));
+
+        result
+            .Recover(err => Ok("I was " + err.Message + ". Now I am happy!!"))
+            .ShouldBeOfType<Result<string, Error>>()
+            .ShouldBe("I was sad. Now I am happy!!");
+    }
+
+    [Fact]
+    public void ShouldGetValue()
+    {
+        Result
+            .Ok("Some value")
+            .Unwrap()
+            .ShouldBe("Some value");
+    }
 }

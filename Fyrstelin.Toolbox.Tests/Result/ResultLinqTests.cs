@@ -12,6 +12,7 @@ public class ResultLinqTests : ResultTesting
             from greeting in Ok("hello world")
             select greeting.ToUpper();
 
+
         res.ShouldBe("HELLO WORLD");
     }
 

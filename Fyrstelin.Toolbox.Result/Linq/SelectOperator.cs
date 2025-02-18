@@ -1,8 +1,6 @@
-﻿using Microsoft.VisualBasic.CompilerServices;
+﻿namespace Fyrstelin.Toolbox.Linq;
 
-namespace Fyrstelin.Toolbox.Linq;
-
-public static partial class Operators
+public static class SelectOperator
 {
     public static Result<TOut, TError> Select<TIn, TOut, TError>(
         this Result<TIn, TError> that,
