@@ -5,6 +5,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <RootNamespace>Fyrstelin.Toolbox</RootNamespace>
+    <RepositoryUrl>https://github.com/fyrstelin/Fyrstelin.Toolbox</RepositoryUrl>
+    <Authors>Andreas Fyrstelin Fuller</Authors>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
   </PropertyGroup>
 
