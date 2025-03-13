@@ -7,6 +7,7 @@
     <RepositoryUrl>https://github.com/fyrstelin/Fyrstelin.Toolbox</RepositoryUrl>
     <Authors>Andreas Fyrstelin Fuller</Authors>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
