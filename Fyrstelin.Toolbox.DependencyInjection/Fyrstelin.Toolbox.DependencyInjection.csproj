@@ -6,6 +6,8 @@
     <Nullable>enable</Nullable>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/fyrstelin/Fyrstelin.Toolbox</RepositoryUrl>
+    <Authors>Andreas Fyrstelin Fuller</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
