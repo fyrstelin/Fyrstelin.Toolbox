@@ -1,5 +1,4 @@
 using System.Collections.Immutable;
-using Fyrstelin.Toolbox.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using Shouldly;
 

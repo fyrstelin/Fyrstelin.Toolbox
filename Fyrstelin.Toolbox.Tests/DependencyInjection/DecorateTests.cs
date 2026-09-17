@@ -1,4 +1,3 @@
-using Fyrstelin.Toolbox.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using Shouldly;
 
