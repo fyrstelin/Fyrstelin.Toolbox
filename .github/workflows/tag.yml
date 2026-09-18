@@ -1,4 +1,4 @@
-name: Tag beta
+name: Tag
 
 on:
   dispatch:
