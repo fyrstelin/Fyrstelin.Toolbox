@@ -1,0 +1,7 @@
+next-version: 1.0.0
+branches:
+  develop:
+    label: beta
+  release:
+    increment: Minor
+    label: rc
