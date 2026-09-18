@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="Fyrstelin.Toolbox.DependencyInjection/Fyrstelin.Toolbox.DependencyInjection.csproj" />
+  <Project Path="Fyrstelin.Toolbox.Result/Fyrstelin.Toolbox.Result.csproj" />
+  <Project Path="Fyrstelin.Toolbox.Streams/Fyrstelin.Toolbox.Streams.csproj" />
+  <Project Path="Fyrstelin.Toolbox.Tests/Fyrstelin.Toolbox.Tests.csproj" />
+  <Project Path="Fyrstelin.Toolbox/Fyrstelin.Toolbox.csproj" />
+</Solution>

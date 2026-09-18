@@ -1,10 +1,8 @@
 ﻿using System.Collections.Immutable;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace Fyrstelin.Toolbox.DependencyInjection;
+namespace Microsoft.Extensions.DependencyInjection;
 
-public static partial class ServiceCollectionExtensions
+public static class ComposeExtensions
 {
     public static IServiceCollection Compose<TService, TComposite>(
         this IServiceCollection services,
@@ -53,7 +51,7 @@ public static partial class ServiceCollectionExtensions
 
         var componentsKey = key == fromKey ? new object() : fromKey;
         
-        ChangeKey(services, components, componentsKey);
+        services.ChangeKey(components, componentsKey);
 
         services.Add(new ServiceDescriptor(typeof(TService), key, (provider, _) =>
         {

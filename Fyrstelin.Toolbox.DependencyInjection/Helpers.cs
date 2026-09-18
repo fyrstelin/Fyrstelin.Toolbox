@@ -1,11 +1,10 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
+﻿using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace Fyrstelin.Toolbox.DependencyInjection;
+namespace Microsoft.Extensions.DependencyInjection;
 
-public static partial class ServiceCollectionExtensions
+internal static class Helpers
 {
-    private static void ChangeKey(IServiceCollection services, IEnumerable<ServiceDescriptor> descriptors, object? componentsKey)
+    public static void ChangeKey(this IServiceCollection services, IEnumerable<ServiceDescriptor> descriptors, object? componentsKey)
     {
         var serviceDescriptors = descriptors.ToList();
         foreach (var descriptor in serviceDescriptors)

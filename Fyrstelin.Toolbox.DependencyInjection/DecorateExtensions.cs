@@ -1,8 +1,11 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿namespace Microsoft.Extensions.DependencyInjection;
 
-namespace Fyrstelin.Toolbox.DependencyInjection;
+public static class X
+{
+    
+}
 
-public static partial class ServiceCollectionExtensions
+public static class DecorateExtensions
 {
     public static IServiceCollection KeyedDecorate<TService, TDecorator>(this IServiceCollection services, object key, object? fromKey = null)
         where TService : notnull
@@ -38,7 +41,7 @@ public static partial class ServiceCollectionExtensions
         }
 
         var decorateeKey = fromKey == key ? new object() : fromKey;
-        ChangeKey(services, [decoratee], decorateeKey);
+        services.ChangeKey([decoratee], decorateeKey);
 
         services.Add(new ServiceDescriptor(typeof(TService),
             key,
