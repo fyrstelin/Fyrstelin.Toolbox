@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
           token: ${{ secrets.ACTIONS_KEY }}
@@ -46,7 +46,7 @@ jobs:
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
           TAG=${{ steps.version_step.outputs.semver }}
-          
+
           git tag -a $TAG -m "Alpha release"
 
           git push origin $TAG
