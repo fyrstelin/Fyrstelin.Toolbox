@@ -1,7 +1,7 @@
 name: Tag
 
 on:
-  dispatch:
+  workflow_dispatch:
 
 jobs:
   tag:
